@@ -1,87 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Linga Bhargav - Video Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linga Bhargav - Videographer & Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo">
-                <h1>Linga Bhargav</h1>
-            </div>
+            <h1>Linga Bhargav</h1>
             <nav>
+                <a href="#about">About</a>
                 <a href="#reels">Reels</a>
                 <a href="#contact">Contact</a>
             </nav>
         </header>
 
-        <main class="intro-section">
+        <section id="about" class="intro-section">
             <div class="about-me">
-                <img src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/me.jpg" alt="Linga Bhargav" class="profile-photo" />
+                <img src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/me.jpg" alt="Linga Bhargav's Profile Photo" class="profile-photo">
                 <h2>About Me</h2>
-                <p>
-                    Hi! I'm a passionate videographer and editor with a keen eye for dynamic storytelling. I specialize in creating compelling visual content that brings ideas to life.
-                </p>
+                <p>Hello! I'm Linga Bhargav, a dedicated videographer and editor specializing in crafting compelling visual narratives. With a passion for storytelling and a keen eye for detail, I bring ideas to life through dynamic and engaging video content. From pre-production to final edit, I am committed to delivering high-quality visuals that resonate with audiences.</p>
             </div>
             <div class="intro-reel">
-                <h2>Intro Reel</h2>
+                <h2>Just me Flexing 😁 !</h2>
                 <div class="video-wrapper">
-                    <video id="main-video" src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/Intro.mp4" controls autoplay muted loop playsinline></video>
+                    <video controls muted autoplay loop>
+                        <source src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/Intro.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
-        </main>
+        </section>
 
         <section id="reels" class="reels-gallery">
-            <h2>Sample Reels</h2>
+            <h2>My Featured Work</h2>
             <div class="gallery-grid">
                 <div class="reel-item">
-                    <a href="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel1.mp4" data-video-url="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel1.mp4">
-                        <video src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel1.mp4" muted loop playsinline></video>
-                        <div class="reel-overlay"><h3>Reel 1</h3></div>
+                    <a href="#" data-video-url="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel1.mp4" target="_blank">
+                        <video muted>
+                            <source src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="reel-overlay">
+                            <h3>Show Case 1</h3>
+                        </div>
                     </a>
                 </div>
                 <div class="reel-item">
-                    <a href="REPLACE_WITH_REEL_2_LINK" data-video-url="REPLACE_WITH_REEL_2_LINK">
-                        <video src="REPLACE_WITH_REEL_2_LINK" muted loop playsinline></video>
-                        <div class="reel-overlay"><h3>Reel 2</h3></div>
+                    <a href="#" data-video-url="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel2.mp4" target="_blank">
+                        <video muted>
+                            <source src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="reel-overlay">
+                            <h3>Show Case 2</h3>
+                        </div>
                     </a>
                 </div>
                 <div class="reel-item">
-                    <a href="REPLACE_WITH_REEL_3_LINK" data-video-url="REPLACE_WITH_REEL_3_LINK">
-                        <video src="REPLACE_WITH_REEL_3_LINK" muted loop playsinline></video>
-                        <div class="reel-overlay"><h3>Reel 3</h3></div>
+                    <a href="#" data-video-url="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel3.mp4" target="_blank">
+                        <video muted>
+                            <source src="https://raw.githubusercontent.com/manooj001/Linga-Bharav---Portfolio/main/reel3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="reel-overlay">
+                            <h3>Show Case 3</h3>
+                        </div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <footer id="contact" class="contact-section">
+        <section id="contact" class="contact-section">
             <h2>Get In Touch</h2>
-            <p>Ready to create something amazing together!</p>
+            <p>Ready to create something amazing!</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span id="phone-number">+91 9133891262</span>
-                    <button class="copy-btn" data-clipboard-target="#phone-number" title="Copy Phone Number"><i class="fas fa-copy"></i></button>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:lingabhargav5703@gamil.com" class="contact-link">lingabhargav5703@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span id="email-address">lingabhargav5703@gamil.com</span>
-                    <button class="copy-btn" data-clipboard-target="#email-address" title="Copy Email Address"><i class="fas fa-copy"></i></button>
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+919133891262" class="contact-link">+91 9133891262</a>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-instagram"></i>
-                    <a href="https://www.instagram.com/bhargav_linga_" target="_blank">@bhargav_linga_</a>
+                    <a href="https://www.instagram.com/bhargav_linga_" target="_blank" class="contact-link">@bhargav_linga_</a>
                 </div>
             </div>
-        </footer>
+        </section>
     </div>
 
     <script src="script.js"></script>
