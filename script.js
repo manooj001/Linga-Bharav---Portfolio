@@ -1,33 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Hover playback for reel thumbnails ---
-    const reelItems = document.querySelectorAll('.reel-item');
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('header nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
 
-    reelItems.forEach(item => {
-        const thumbnailVideo = item.querySelector('video');
-
-        item.addEventListener('mouseenter', () => {
-            if (thumbnailVideo) {
-                thumbnailVideo.currentTime = 0; // Reset video to start
-                thumbnailVideo.play();
-            }
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
+    });
 
-        item.addEventListener('mouseleave', () => {
-            if (thumbnailVideo) thumbnailVideo.pause();
+    // Play/Pause video on hover for reel items
+    document.querySelectorAll('.reel-item video').forEach(video => {
+        video.addEventListener('mouseenter', () => {
+            video.play();
         });
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // Reset video to start
+        });
+    });
 
-        // --- Handle click to play reel in new tab ---
+    // Handle click on reel items to open video in a new tab
+    document.querySelectorAll('.reel-item').forEach(item => {
         const reelLink = item.querySelector('a'); // Get the anchor tag within the reel item
+
         if (reelLink) {
             reelLink.addEventListener('click', (event) => {
                 event.preventDefault(); // Prevent the default download behavior of the <a> tag
 
-                const videoUrl = reelLink.getAttribute('data-video-url'); // Get the video URL from the data attribute
+                // Get the video URL from the 'data-video-url' attribute in the HTML
+                const videoUrl = reelLink.getAttribute('data-video-url');
 
                 if (videoUrl) {
-                    // Create a new tab and dynamically add a video element to it
-                    const newWindow = window.open('', '_blank'); // Open a blank new tab
+                    // Open a blank new tab
+                    const newWindow = window.open('', '_blank');
+
                     if (newWindow) {
+                        // Dynamically write an HTML page into the new tab with a video element
                         newWindow.document.write(`
                             <!DOCTYPE html>
                             <html lang="en">
@@ -61,70 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         newWindow.document.close(); // Close the document stream
                     } else {
                         console.error('Failed to open new window. Pop-up blocker might be active.');
-                        // Fallback: If new window fails, try opening directly in a new tab (might still download)
-                        // This fallback is less ideal but better than nothing
+                        // Fallback: If new window fails (e.g., due to pop-up blocker),
+                        // try opening directly. This might still download depending on browser.
                         window.open(videoUrl, '_blank');
                     }
                 }
             });
         }
     });
-
-    // --- Copy to clipboard functionality ---
-    const copyButtons = document.querySelectorAll('.copy-btn');
-
-    copyButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetSelector = button.dataset.clipboardTarget;
-            const targetElement = document.querySelector(targetSelector);
-
-            if (targetElement) {
-                const textToCopy = targetElement.innerText;
-
-                // Use the modern Clipboard API for better practice
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(textToCopy)
-                        .then(() => {
-                            button.innerHTML = '<i class="fas fa-check"></i>';
-                            button.classList.add('copied');
-                            setTimeout(() => {
-                                button.innerHTML = '<i class="fas fa-copy"></i>';
-                                button.classList.remove('copied');
-                            }, 2000);
-                        })
-                        .catch(err => {
-                            console.error('Copy failed (Clipboard API):', err);
-                            // Fallback to old method if Clipboard API fails
-                            fallbackCopyTextToClipboard(textToCopy, button);
-                        });
-                } else {
-                    // Fallback for older browsers
-                    fallbackCopyTextToClipboard(textToCopy, button);
-                }
-            }
-        });
-    });
-
-    function fallbackCopyTextToClipboard(textToCopy, button) {
-        const textArea = document.createElement('textarea');
-        textArea.value = textToCopy;
-        textArea.style.position = 'fixed'; // Prevent scrolling to bottom of page in iOS.
-        textArea.style.opacity = '0'; // Hide the textarea
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-
-        try {
-            document.execCommand('copy');
-            button.innerHTML = '<i class="fas fa-check"></i>';
-            button.classList.add('copied');
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-copy"></i>';
-                button.classList.remove('copied');
-            }, 2000);
-        } catch (err) {
-            console.error('Copy failed (execCommand):', err);
-        }
-        document.body.removeChild(textArea);
-    }
 });
